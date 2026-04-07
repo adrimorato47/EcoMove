@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('marca');
             $table->string('modelo');
-            $table->decicmal('precio_alquiler', 8,2);
-            $table->decimal('precio_venta', 10, 2)->nullable();
+            $table->decimal('precio_alquiler', 8,2);
+            $table->decimal('precio_venta', 10,2)->nullable();
             $table->integer('autonomia_km')->nullable();
             $table->text('descripcion');
-            $table->string('imagen');nullable();
+            $table->string('imagen')->nullable();
             $table->boolean('disponible')->default(true);
             $table->timestamps();
         });

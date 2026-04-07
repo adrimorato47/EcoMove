@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->contrained()->cascadeOnDelete();
-            $table->foreingId('vehicle_id')->contrained()->cascadeOnDelete();
+            $table->foreignId('vehicle_id')->contrained()->cascadeOnDelete();
             $table->integer('puntuacion');
             $table->text('comentario')->nullable();
             $table->timestamps();
