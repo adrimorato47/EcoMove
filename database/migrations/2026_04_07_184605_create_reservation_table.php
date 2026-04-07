@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('reservation', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->contrained()->cascadeOnDelete();
+            $table->foreignId('vehicle_id')->contrained()->cascadeOnDelete();
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->decimal('precio_total', 10,2);
+            $table->string('estado')->default('pendiente');
+            $table->timestamp('fecha_reserva')->useCurrent();
             $table->timestamps();
         });
     }

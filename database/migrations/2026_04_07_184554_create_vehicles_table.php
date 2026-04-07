@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('tipo');
+            $table->string('marca');
+            $table->string('modelo');
+            $table->decicmal('precio_alquiler', 8,2);
+            $table->decimal('precio_venta', 10, 2)->nullable();
+            $table->integer('autonomia_km')->nullable();
+            $table->text('descripcion');
+            $table->string('imagen');nullable();
+            $table->boolean('disponible')->default(true);
             $table->timestamps();
         });
     }
