@@ -17,7 +17,7 @@
     <body class="font-sans antialiased">
         {{--Navbar que se muestra en todas las vistas--}}
        <div class="header">
-            <nav class="w-full border-b border-default bg-neutral-primary h-16">
+            <nav class="w-full sticky top-0 z-50 border-b border-default bg-neutral-primary h-16">
                 <div class="max-w-screen-xl flex items-center justify-between mx-auto px-4 h-full">
 
                     <a href="/" class="flex items-center">
@@ -52,5 +52,8 @@
                 </div>
             </nav>
         </div>
+        <main>
+            @yield('content')
+        </main>
     </body>
 </html>

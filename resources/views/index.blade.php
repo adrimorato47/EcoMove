@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('content')
+{{--Carrusel de imagenes--}}
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-base md:h-96">
@@ -8,19 +10,19 @@
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/img/img1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/img/img2.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/img/img1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/img/img3.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/img/img1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/img/img4.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/img/img1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/img/img5.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
     </div>
     <!-- Slider indicators -->
@@ -45,3 +47,40 @@
         </span>
     </button>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const items = document.querySelectorAll('[data-carousel-item]');
+    const indicators = document.querySelectorAll('[data-carousel-slide-to]');
+    let current = 0;
+
+    function goTo(index) {
+        items[current].classList.add('hidden');
+        indicators[current]?.classList.remove('bg-white');
+        current = (index + items.length) % items.length;
+        items[current].classList.remove('hidden');
+        indicators[current]?.classList.add('bg-white');
+    }
+
+    // Mostrar el primero
+    goTo(0);
+
+    // Botones anterior/siguiente
+    document.querySelector('[data-carousel-prev]')?.addEventListener('click', () => goTo(current - 1));
+    document.querySelector('[data-carousel-next]')?.addEventListener('click', () => goTo(current + 1));
+
+    // Indicadores
+    indicators.forEach(btn => {
+        btn.addEventListener('click', () => goTo(parseInt(btn.dataset.carouselSlideTo)));
+    });
+
+    // Auto-avance cada 4 segundos
+    setInterval(() => goTo(current + 1), 4000);
+});
+</script>
+
+{{-- Mensaje de valor --}}
+<div class="content-center relative w-full bg-red-300">
+    <p class="font-sans text-[28px]">Tu veículo eléctrico, cuando lo necesites</p>
+    <p>Alquila en minutos o encuentra el coche perfecto para ti</p>
+</div>
+@endsection
