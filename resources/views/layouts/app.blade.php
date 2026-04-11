@@ -36,11 +36,41 @@
                         </svg>
                     </button>
                     {{--Lista de enlaces--}}
-                    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-neutral-primary">
-                            <li><a href="#" class="block py-2 px-3 text-white bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0" aria-current="page">Home</a></li>
+                    <div class="hidden w-full md:block md:w-auto absolute md:relative left-0 md:left-auto right-0 top-16 md:top-auto z-40" id="navbar-default">
+                        <ul class="font-medium flex flex-col p-4 mt-4 border border-default rounded-base bg-white md:bg-neutral-primary md:flex-row md:space-x-8 md:mt-0 md:border-0 md:w-auto">
                             <li><a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">Inicio</a></li>
-                            <li><a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">Servicios</a></li>
+                            <li class="relative">
+                                <button onclick="toggleMobileSubmenu(event)"
+                                    class="flex items-center justify-between w-full py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent">
+                                    Servicios
+                                    <svg class="w-2.5 h-2.5 ms-2.5 transition-transform duration-200" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Submenú para móvil -->
+                                <div class="submenu hidden pl-4 md:absolute md:pl-0 md:left-0 md:mt-2 md:w-44">
+                                    <ul class="font-normal bg-white md:bg-white md:rounded-lg md:shadow md:divide-y md:divide-gray-100">
+                                        <li><a href="#" class="block py-2 px-3 text-sm hover:bg-gray-100 md:px-4">Alquiler de vehículos</a></li>
+                                        <li><a href="#" class="block py-2 px-3 text-sm hover:bg-gray-100 md:px-4">Venta de vehículos</a></li>
+                                        <li><a href="#" class="block py-2 px-3 text-sm hover:bg-gray-100 md:px-4">Renting para empresas</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <script>
+                            function toggleMobileSubmenu(event) {
+                                const button = event.currentTarget;
+                                const submenu = button.nextElementSibling;
+                                const isMobile = window.innerWidth < 768;
+
+                                if (isMobile) {
+                                    submenu.classList.toggle('hidden');
+                                    const arrow = button.querySelector('svg');
+                                    arrow.style.transform = submenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                                }
+                            }
+                            </script>
                             <li><a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">Catálogo</a></li>
                             <li><a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">Reservas</a></li>
                             <li><a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0">Sobre nosotros</a></li>

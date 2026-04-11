@@ -80,7 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 {{-- Mensaje de valor --}}
 <div class="content-center relative w-full bg-red-300">
-    <p class="font-sans text-[28px]">Tu veículo eléctrico, cuando lo necesites</p>
-    <p>Alquila en minutos o encuentra el coche perfecto para ti</p>
+    <div class="box-border border-8 p-8 text flex-1 text-center">
+        <p class="font-sans text-[54px]">Tu veículo eléctrico, cuando lo necesites</p>
+        <p class="font-sans text-[36px]">Alquila en minutos o encuentra el coche perfecto para ti</p>
+    </div>
+</div>
+
+{{--CTA--}}
+<div class="flex">
+    <div class="w-50 flex-1 bg-red-500 text-center font-sans border-8 p-8 text-[20px]">Alquilar ahora</div>
+    <div class="w-50 flex-1 bg-blue-500 text-center font-sans border-8 p-8 text-[20px]">Ver vehículos</div>
 </div>
 @endsection
